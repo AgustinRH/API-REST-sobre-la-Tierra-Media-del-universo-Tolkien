@@ -50,10 +50,23 @@ php artisan key:generate
 php artisan migrate
 ```
 
-### 6. Rellenar base de datos (opcional)
+Esto creará las siguientes tablas:
+- `cache`
+- `regions` - Regiones geográficas
+- `realms` - Reinos
+- `creatures` - Criaturas del mundo
+- `heroes` - Personajes principales
+- `artifacts` - Objetos mágicos
+- `artifacts_hero` - Relación entre artefactos y héroes
+- `personal_access_tokens` - Tokens de Sanctum
+- `sessions` - Sesiones de usuario
+
+### 6. Rellenar base de datos con datos de ejemplo (opcional)
 ```bash
 php artisan db:seed
 ```
+
+Esto ejecutará todos los seeders y poblará las tablas con datos de ejemplo del universo de Tolkien.
 
 ### 7. Iniciar el servidor
 ```bash
@@ -109,22 +122,38 @@ Los endpoints están disponibles en `routes/api.php`. La API utiliza autenticaci
 
 El proyecto incluye seeders para rellenar la base de datos con datos de ejemplo:
 
-```bash
-# Ejecutar todos los seeders
-php artisan db:seed
+### Ejecutar Seeders
 
-# Ejecutar seeder específico
+#### Ejecutar todos los seeders
+```bash
+php artisan db:seed
+```
+
+#### Ejecutar un seeder específico
+```bash
+php artisan db:seed --class=RegionsSeeder
+php artisan db:seed --class=RealmsSeeder
+php artisan db:seed --class=CreaturesSeeder
 php artisan db:seed --class=HeroesSeeder
+php artisan db:seed --class=ArtifactsSeeder
+php artisan db:seed --class=ArtifactHeroSeeder
+```
+
+#### Resetear y re-ejecutar seeders
+```bash
+php artisan migrate:refresh --seed
 ```
 
 ### Seeders Disponibles
 
-- `RegionsSeeder`
-- `RealmsSeeder`
-- `CreaturesSeeder`
-- `HeroesSeeder`
-- `ArtifactsSeeder`
-- `ArtifactHeroSeeder`
+| Seeder | Descripción |
+|--------|-------------|
+| `RegionsSeeder` | Crea regiones geográficas de la Tierra Media |
+| `RealmsSeeder` | Crea reinos dentro de las regiones |
+| `CreaturesSeeder` | Crea criaturas y monstruos del mundo |
+| `HeroesSeeder` | Crea héroes y personajes principales |
+| `ArtifactsSeeder` | Crea artefactos mágicos y tesoros |
+| `ArtifactHeroSeeder` | Asigna artefactos a héroes (relación many-to-many) |
 
 ## 🚀 Desarrollo
 
@@ -147,6 +176,112 @@ php artisan test
 ```bash
 ./vendor/bin/pint
 ```
+
+## 📮 Probar los Endpoints con Postman
+
+El proyecto incluye un archivo JSON para importar en **Postman** con todos los endpoints configurados:
+
+### Ubicación del archivo
+```
+JSON POSTMAN/api-rest-test.json
+```
+
+### Importar la colección en Postman
+
+1. Abre **Postman**
+2. Haz clic en **Import** (o `Ctrl+O`)
+3. Selecciona **File** y busca `JSON POSTMAN/api-rest-test.json`
+4. Haz clic en **Import**
+
+### Estructura de la Colección
+
+La colección incluye todas las pruebas organizadas por recursos:
+
+#### 1. **Regiones** - Gestión de regiones geográficas
+- `GET` Listar todas las regiones
+- `GET` Ver una región específica
+- `POST` Crear nueva región
+- `PUT` Actualizar región
+- `DELETE` Eliminar región
+
+#### 2. **Reinos** - Gestión de reinos y territorios
+- `GET` Listar todos los reinos
+- `GET` Detalle del reino (incluye relaciones)
+- `GET` Listar héroes de un reino
+- `POST` Crear nuevo reino
+- `PUT` Actualizar reino
+- `DELETE` Eliminar reino
+
+#### 3. **Héroes** - Gestión de personajes principales
+- `GET` Listar todos los héroes
+- `GET` Detalle del héroe (incluye reino y artefactos)
+- `GET` Listar héroes vivos
+- `GET` Listar artefactos de un héroe
+- `POST` Crear nuevo héroe
+- `PUT` Actualizar héroe
+- `DELETE` Eliminar héroe
+
+#### 4. **Criaturas** - Gestión de criaturas y monstruos
+- `GET` Listar todas las criaturas
+- `GET` Detalle de criatura (incluye región)
+- `GET` Criaturas peligrosas (filtro por nivel de amenaza)
+- `POST` Crear nueva criatura
+- `PUT` Actualizar criatura
+- `DELETE` Eliminar criatura
+
+#### 5. **Artefactos** - Gestión de objetos mágicos
+- `GET` Listar todos los artefactos
+- `GET` Detalle del artefacto
+- `POST` Crear nuevo artefacto
+- `PUT` Actualizar artefacto
+- `DELETE` Eliminar artefacto
+
+### Ejemplos de Requests
+
+Algunos ejemplos incluidos en la colección:
+
+```json
+// Crear una región
+POST /api/regions
+{
+  "name": "Mordor"
+}
+
+// Crear un reino
+POST /api/realms
+{
+  "name": "Gondor",
+  "ruler": "Aragorn",
+  "alignment": "Bien",
+  "region_id": 1
+}
+
+// Crear un héroe
+POST /api/heroes
+{
+  "name": "Legolas",
+  "race": "Elfo",
+  "rank": "Príncipe",
+  "realm_id": 1,
+  "alive": true
+}
+
+// Crear una criatura
+POST /api/creatures
+{
+  "name": "Balrog",
+  "species": "Maia",
+  "threat_level": 10,
+  "region_id": 1
+}
+```
+
+### Consejos para usar la colección
+
+- **URL Base**: Por defecto está configurada a `http://localhost/api/` - ajusta según tu configuración
+- **Parámetros**: Reemplaza los valores de ejemplo (1, "Mordor", etc.) según tus necesidades
+- **Respuestas**: Observa las respuestas JSON para entender la estructura de datos
+- **Relaciones**: Los endpoints GET de detalle incluyen las relaciones (realm, artifacts, etc.)
 
 ## 📁 Estructura del Proyecto
 

@@ -204,7 +204,7 @@ Este proyecto está bajo licencia MIT.
 
 ## 👨‍💻 Autor
 
-Agustín
+AgustínRH
 
 ## 📞 Soporte
 

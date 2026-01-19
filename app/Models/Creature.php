@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Creature extends Model
 {
-    protected $fillable = ['name', 'species', 'threat_level', 'region_id'];
+    protected $fillable = ['name', 'species', 'danger_level', 'region_id'];
     
     public function region() {
         return $this->belongsTo(Region::class);

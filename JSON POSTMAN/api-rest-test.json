@@ -1,6 +1,6 @@
 {
 	"info": {
-		"name": "LOTR API - Full Validation (All Endpoints)",
+		"name": "LOTR API - MODO EXPERTO (Sin Errores)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -8,63 +8,61 @@
 			"name": "1. Regiones",
 			"item": [
 				{ "name": "GET Listar todas", "request": { "method": "GET", "url": "http://localhost/api/regions" }},
-				{ "name": "GET Ver una específica", "request": { "method": "GET", "url": "http://localhost/api/regions/1" }},
-				{ "name": "POST Crear nueva", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Mordor\"}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/regions" }},
-				{ "name": "PUT Actualizar", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"name\": \"Mordor (Tierras Sombrías)\"}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/regions/1" }},
-				{ "name": "DELETE Eliminar", "request": { "method": "DELETE", "url": "http://localhost/api/regions/1" }}
+				{ "name": "GET Ver Específica (ID 2)", "request": { "method": "GET", "url": "http://localhost/api/regions/2" }},
+				{ "name": "POST Crear Nueva", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Tierras del Este\"}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/regions" }},
+				{ "name": "PUT Actualizar (ID 5)", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"name\": \"Rohan (Marca de los Jinetes)\"}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/regions/5" }},
+				{ "name": "DELETE Eliminar (ID 4)", "request": { "method": "DELETE", "url": "http://localhost/api/regions/4" }}
 			]
 		},
 		{
 			"name": "2. Reinos",
 			"item": [
 				{ "name": "GET Listar todos", "request": { "method": "GET", "url": "http://localhost/api/realms" }},
-				{ "name": "GET Detalle (con Region, Heroes, Artifacts)", "request": { "method": "GET", "url": "http://localhost/api/realms/1" }},
-				{ "name": "GET Listar Héroes del Reino (Extra)", "request": { "method": "GET", "url": "http://localhost/api/realms/1/heroes" }},
-				{ "name": "POST Crear nuevo", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Gondor\", \"ruler\": \"Aragorn\", \"alignment\": \"Bien\", \"region_id\": 1}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/realms" }},
-				{ "name": "PUT Actualizar", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"name\": \"Gondor\", \"ruler\": \"Elessar\", \"alignment\": \"Bien\", \"region_id\": 1}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/realms/1" }},
-				{ "name": "DELETE Eliminar", "request": { "method": "DELETE", "url": "http://localhost/api/realms/1" }}
+				{ "name": "GET Detalle Completo (ID 2)", "request": { "method": "GET", "url": "http://localhost/api/realms/2" }},
+				{ "name": "GET Héroes de un Reino (ID 2)", "request": { "method": "GET", "url": "http://localhost/api/realms/2/heroes" }},
+				{ "name": "POST Crear Reino", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Nargothrond\", \"ruler\": \"Finrod\", \"alignment\": \"Bien\", \"region_id\": 6}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/realms" }},
+				{ "name": "PUT Actualizar (ID 3)", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"name\": \"Mordor\", \"ruler\": \"Sauron El Grande\", \"alignment\": \"Mal\", \"region_id\": 3}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/realms/3" }},
+				{ "name": "DELETE Eliminar (ID 7)", "request": { "method": "DELETE", "url": "http://localhost/api/realms/7" }}
 			]
 		},
 		{
 			"name": "3. Héroes",
 			"item": [
 				{ "name": "GET Listar todos", "request": { "method": "GET", "url": "http://localhost/api/heroes" }},
-				{ "name": "GET Detalle (con Realm y Artifacts)", "request": { "method": "GET", "url": "http://localhost/api/heroes/1" }},
-				{ "name": "GET Listar Vivos (Extra)", "request": { "method": "GET", "url": "http://localhost/api/heroes/alive" }},
-				{ "name": "GET Listar sus Artefactos (Extra)", "request": { "method": "GET", "url": "http://localhost/api/heroes/1/artifacts" }},
-				{ "name": "POST Crear nuevo", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Legolas\", \"race\": \"Elfo\", \"rank\": \"Príncipe\", \"realm_id\": 1, \"alive\": true}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/heroes" }},
-				{ "name": "PUT Actualizar", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"name\": \"Legolas\", \"rank\": \"Rey del Bosque\", \"alive\": true}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/heroes/1" }},
-				{ "name": "DELETE Eliminar", "request": { "method": "DELETE", "url": "http://localhost/api/heroes/1" }}
+				{ "name": "GET Detalle Héroe (ID 4 - Frodo)", "request": { "method": "GET", "url": "http://localhost/api/heroes/4" }},
+				{ "name": "GET Listar Vivos", "request": { "method": "GET", "url": "http://localhost/api/heroes/alive" }},
+				{ "name": "GET Sus Artefactos (ID 4)", "request": { "method": "GET", "url": "http://localhost/api/heroes/4/artifacts" }},
+				{ "name": "POST Crear Héroe", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Faramir\", \"race\": \"Humano\", \"rank\": \"Capitán\", \"realm_id\": 2, \"alive\": true}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/heroes" }},
+				{ "name": "PUT Actualizar (ID 5)", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"name\": \"Boromir\", \"rank\": \"Héroe Caído\", \"alive\": false}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/heroes/5" }},
+				{ "name": "DELETE Eliminar (ID 3)", "request": { "method": "DELETE", "url": "http://localhost/api/heroes/3" }}
 			]
 		},
 		{
 			"name": "4. Criaturas",
 			"item": [
 				{ "name": "GET Listar todas", "request": { "method": "GET", "url": "http://localhost/api/creatures" }},
-				{ "name": "GET Detalle (con Region)", "request": { "method": "GET", "url": "http://localhost/api/creatures/1" }},
-				{ "name": "GET Peligrosas level >= 8 (Extra)", "request": { "method": "GET", "url": "http://localhost/api/creatures/dangerous?level=8" }},
-				{ "name": "POST Crear nueva", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Balrog\", \"species\": \"Maia\", \"threat_level\": 10, \"region_id\": 1}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/creatures" }},
-				{ "name": "PUT Actualizar", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"threat_level\": 11}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/creatures/1" }},
-				{ "name": "DELETE Eliminar", "request": { "method": "DELETE", "url": "http://localhost/api/creatures/1" }}
+				{ "name": "GET Detalle (ID 1)", "request": { "method": "GET", "url": "http://localhost/api/creatures/1" }},
+				{ "name": "GET Peligrosas >= 8", "request": { "method": "GET", "url": "http://localhost/api/creatures/dangerous?level=8" }},
+				{ "name": "POST Crear Criatura", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Nazgûl\", \"species\": \"Espectro\", \"threat_level\": 9, \"region_id\": 3}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/creatures" }},
+				{ "name": "DELETE Eliminar (ID 6)", "request": { "method": "DELETE", "url": "http://localhost/api/creatures/6" }}
 			]
 		},
 		{
 			"name": "5. Artefactos",
 			"item": [
 				{ "name": "GET Listar todos", "request": { "method": "GET", "url": "http://localhost/api/artifacts" }},
-				{ "name": "GET Detalle (con Realm y Heroes)", "request": { "method": "GET", "url": "http://localhost/api/artifacts/1" }},
-				{ "name": "GET Top Poder > 90 (Extra)", "request": { "method": "GET", "url": "http://localhost/api/artifacts/top" }},
-				{ "name": "GET Listar sus Portadores (Extra)", "request": { "method": "GET", "url": "http://localhost/api/artifacts/1/heroes" }},
-				{ "name": "POST Crear nuevo", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Anillo Único\", \"type\": \"Anillo\", \"origin_realm_id\": 1, \"power_level\": 100}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/artifacts" }},
-				{ "name": "PUT Actualizar", "request": { "method": "PUT", "body": { "mode": "raw", "raw": "{\"power_level\": 99}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/artifacts/1" }},
-				{ "name": "DELETE Eliminar", "request": { "method": "DELETE", "url": "http://localhost/api/artifacts/1" }}
+				{ "name": "GET Detalle (ID 4)", "request": { "method": "GET", "url": "http://localhost/api/artifacts/4" }},
+				{ "name": "GET Portadores (ID 4)", "request": { "method": "GET", "url": "http://localhost/api/artifacts/4/heroes" }},
+				{ "name": "GET Top Poder > 90", "request": { "method": "GET", "url": "http://localhost/api/artifacts/top" }},
+				{ "name": "POST Crear Artefacto", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"name\": \"Anglachel\", \"type\": \"Espada\", \"origin_realm_id\": 5, \"power_level\": 89}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/artifacts" }},
+				{ "name": "DELETE Eliminar (ID 3)", "request": { "method": "DELETE", "url": "http://localhost/api/artifacts/3" }}
 			]
 		},
 		{
-			"name": "6. Gestión de Inventario (N:N)",
+			"name": "6. Gestión Inventario (N:N)",
 			"item": [
-				{ "name": "POST Asignar Artefacto a Héroe", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"hero_id\": 1, \"artifact_id\": 1}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/artifact-hero" }},
-				{ "name": "DELETE Retirar Artefacto de Héroe", "request": { "method": "DELETE", "body": { "mode": "raw", "raw": "{\"hero_id\": 1, \"artifact_id\": 1}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/artifact-hero" }}
+				{ "name": "POST Asignar (Gimli porta Andúril)", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\"hero_id\": 3, \"artifact_id\": 2}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/artifact-hero" }},
+				{ "name": "DELETE Retirar (Frodo deja Anillo)", "request": { "method": "DELETE", "body": { "mode": "raw", "raw": "{\"hero_id\": 4, \"artifact_id\": 1}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost/api/artifact-hero" }}
 			]
 		}
 	]

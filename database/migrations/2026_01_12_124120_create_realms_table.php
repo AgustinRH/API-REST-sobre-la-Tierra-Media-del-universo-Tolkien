@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('ruler');
             $table->string('alignment');
-            $table->foreignId('region_id')->constrained('regions');
+            $table->foreignId('region_id')->constrained('regions')->cascadeOnDelete();
             $table->timestamps();
         });
     }

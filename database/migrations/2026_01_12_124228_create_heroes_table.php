@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('race');
             $table->string('rank')->nullable();
-            $table->foreignId('realm_id')->constrained('realms');
+            $table->foreignId('realm_id')->constrained('realms')->cascadeOnDelete();
             $table->boolean('alive')->default(true);
             $table->timestamps();
         });

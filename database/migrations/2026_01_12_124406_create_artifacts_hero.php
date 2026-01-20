@@ -8,8 +8,8 @@ return new class extends Migration {
     public function up() {
         Schema::create('artifact_hero', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('artifact_id')->constrained('artifacts');
-            $table->foreignId('hero_id')->constrained('heroes');
+            $table->foreignId('artifact_id')->constrained('artifacts')->cascadeOnDelete();
+            $table->foreignId('hero_id')->constrained('heroes')->cascadeOnDelete();
             $table->timestamps();
         });
     }

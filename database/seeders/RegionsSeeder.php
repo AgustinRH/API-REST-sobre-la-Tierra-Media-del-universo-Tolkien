@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 class RegionsSeeder extends Seeder {
     public function run() {
-        DB::table('regions')->insert([
-            ['name' => 'Eriador'],
-            ['name' => 'Rhovanion'],
-            ['name' => 'Mordor'],
-            ['name' => 'Gondor'],
-            ['name' => 'Rohan'],
-        ]);
-    }
+    DB::table('regions')->insert([
+        ['name' => 'Eriador'],   
+        ['name' => 'Rhovanion'], 
+        ['name' => 'Mordor'],    
+        ['name' => 'Gondor'],   
+        ['name' => 'Rohan'],     
+        ['name' => 'Beleriand'], 
+        ['name' => 'Aman'],       
+    ]);
+}
 }

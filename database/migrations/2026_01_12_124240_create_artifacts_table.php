@@ -10,7 +10,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->foreignId('origin_realm_id')->constrained('realms');
+            $table->foreignId('origin_realm_id')->constrained('realms')->cascadeOnDelete();
             $table->unsignedTinyInteger('power_level');
             $table->text('description')->nullable();
             $table->timestamps();

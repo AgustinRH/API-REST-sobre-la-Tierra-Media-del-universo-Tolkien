@@ -319,6 +319,15 @@ El proyecto incluye `compose.yaml` para ejecutarse con Docker:
 ./vendor/bin/sail up
 ```
 
+## Recomendaciones
+
+Es recomendable borrar y crear de nuevo las migraciones y seedes cada vez que se pruebe el test de JSON
+
+```bash
+./vendor/bin/sail artisan migrate:refresh --seed
+```
+
+
 ## 📝 Logs
 
 Los logs de la aplicación se encuentran en `storage/logs/`
